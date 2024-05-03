@@ -6,6 +6,7 @@ package com.springboot.user.controller;
         import org.springframework.web.bind.annotation.*;
 
         import java.util.List;
+        import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/users")
@@ -16,6 +17,11 @@ public class UserController {
     @GetMapping("/")
     public List<User> getUsers() {
         return userRepository.findAll();
+    }
+
+    @GetMapping("/AP")
+    public List<User> getUsersAP() {
+         return userRepository.findByAddress("AP");
     }
 
     @GetMapping("/{id}")

@@ -12,6 +12,8 @@
 	<artifactId>user</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>user</name>
+	<!-- To package the application as JAR and run it in server if required -->
+	<packaging>jar</packaging>
 	<description>Demo project for User Service</description>
 	<properties>
 		<java.version>17</java.version>
