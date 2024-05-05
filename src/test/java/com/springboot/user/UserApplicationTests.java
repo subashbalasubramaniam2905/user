@@ -11,4 +11,10 @@ class UserApplicationTests {
 	void contextLoads() {
 	}
 
+
+	//code to create a new test case - Gopi
+	@Test
+	void newTest() {
+	}
+
 }
