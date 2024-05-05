@@ -3,7 +3,9 @@ package com.springboot.user.controller;
         import com.springboot.user.model.User;
         import com.springboot.user.repo.UserRepository;
         import org.springframework.beans.factory.annotation.Autowired;
+        import org.springframework.http.ResponseEntity;
         import org.springframework.web.bind.annotation.*;
+        import org.springframework.web.client.RestTemplate;
 
         import java.util.List;
         import java.util.stream.Collectors;
@@ -13,6 +15,9 @@ package com.springboot.user.controller;
 public class UserController {
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private RestTemplate restTemplate;
 
     @GetMapping("/")
     public List<User> getUsers() {
@@ -44,4 +49,13 @@ public class UserController {
     public void deleteUser(@PathVariable Long id) {
         userRepository.deleteById(id);
     }
+
+    @GetMapping("/external/{name}")
+    public ResponseEntity<String> externalCall(@PathVariable  String name) {
+        String externalAppUrl = "http://localhost:8083/awdhootTest/login/hello/"+name; // Replace with the actual URL
+        ResponseEntity<String> response = restTemplate.getForEntity(externalAppUrl, String.class);
+        return response;
+    }
+
+
 }
