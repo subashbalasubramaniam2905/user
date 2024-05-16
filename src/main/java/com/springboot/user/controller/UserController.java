@@ -1,21 +1,23 @@
 package com.springboot.user.controller;
 
-        import com.springboot.user.model.User;
-        import com.springboot.user.repo.UserRepository;
-        import org.springframework.beans.factory.annotation.Autowired;
-        import org.springframework.http.ResponseEntity;
-        import org.springframework.web.bind.annotation.*;
-        import org.springframework.web.client.RestTemplate;
+import com.springboot.user.model.User;
+import com.springboot.user.repo.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
-        import java.util.List;
-        import java.util.stream.Collectors;
+import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
+
 @RequestMapping("/api/users")
 public class UserController {
     @Autowired
     private UserRepository userRepository;
 
+    //Dependency Injection
     @Autowired
     private RestTemplate restTemplate;
 
